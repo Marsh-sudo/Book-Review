@@ -1,0 +1,28 @@
+{%extends 'all-books/base.html'%}
+{%load bootstrap3%}
+{%load static%}
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        {%for book in books%}
+        <div class="card mb-3" style="width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{book.logo}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{book.title}}</h5>
+                  <p class="card-text"><small class="text-muted">{{book.author}}</small></p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+            <a href="/my_book/{{book.id}}" class="btn btn-outline-warning font-weight-bold btn-sm mb-2">SEE MORE</a> 
+          </div>
+          {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
