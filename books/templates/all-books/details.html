@@ -1,0 +1,50 @@
+{%extends 'all-books/base.html'%}
+{%load bootstrap3%}
+{%load static%}
+{%block content%}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <img src="{{novels.logo.url}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{novels.title}}</h5>
+                  <p class="card-text"><small class="text-muted">By:{{novels.author}}</small></p>
+                  <p class="card-text">4.5|1000+ reviews</p>
+                  <br><br><br>
+                  <p class="card-text">Genre:{{novels.genre}}</p>
+                  <p class="card-text">Pages:{{novels.pages}}</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card-body">
+                  <p class="card-text">{{novels.description}}</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{%url 'newreview' novels.id %}?next={{ request.path}}" class="btn btn-primary" style="margin-left: 150px;">ADD POST</a>
+<div class="container">
+  <div class="row">
+    {%if novels.books.all%}
+    {%for review in novels.books.all%}
+    <div class="card">
+      <h5 class="card-header" style="text-align: center; background-color: aqua;">REVIEWS</h5>
+      <div class="card-body">
+        <h5 class="card-title">{{review.title|title}}</h5>
+        <p class="card-text">{{review.post}}</p>
+      </div>
+    </div>    
+    {%endfor%}
+    {%endif%}
+  </div>
+</div>
+
+{%endblock%}
