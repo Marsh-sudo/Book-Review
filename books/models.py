@@ -1,4 +1,5 @@
-from turtle import title
+
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +10,8 @@ class Books(models.Model):
     author = models.CharField(max_length=200,blank=True)
     admin = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     logo = models.ImageField(upload_to='images/')
+    genre = models.CharField(max_length=200,blank=True)
+    pages = models.IntegerField(blank=True,default=1)
 
 
 
@@ -22,5 +25,5 @@ class Profile(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=300,blank=True)
     post = models.TextField()
-    author = models.CharField(max_length=200,blank=True)
+    author = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     book = models.ForeignKey(Books,on_delete=models.CASCADE,related_name='books',blank=True,null=True)
