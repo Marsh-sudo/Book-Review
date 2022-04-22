@@ -56,3 +56,11 @@ def new_review(request,id):
         review_form = NewReviewForm()
 
     return render(request,'all-books/review.html',{"review_form":review_form})
+
+
+def search_book(request):
+    if request.method == 'GET':
+        title = request.GET.get("title")
+        searched = Books.objects.filter(title=title).all()
+
+    return render (request,'all-books/search.html',{"novels":searched})
