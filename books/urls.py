@@ -9,7 +9,7 @@ urlpatterns=[
     path('newbook',views.new_book,name='newbook'),
     path('my_book/<int:id>',views.book_details,name='my_book'),
     path('newreview/<int:id>',views.new_review,name='newreview'),
-
+    path('search',views.search_book,name='search'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
