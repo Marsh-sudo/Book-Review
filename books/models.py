@@ -1,5 +1,4 @@
 
-from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,6 +11,7 @@ class Books(models.Model):
     logo = models.ImageField(upload_to='images/')
     genre = models.CharField(max_length=200,blank=True)
     pages = models.IntegerField(blank=True,default=1)
+    price = models.IntegerField(blank=True,default=1)
 
 
 
