@@ -1,0 +1,27 @@
+{%extends 'all-books/base.html'%}
+{% load bootstrap3%}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        {%if novels%}
+        {% for book in novels %}
+        <div class="col-md-4 mt-4">
+            <div class="card">
+                <img class="card-img-top" src="{{book.logo.url}}" alt="" height="250">
+                <div class="card-body pt-5">
+                    <h5>{{book.title|title}}</h5>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%else%}
+        <div class="col-md-12 text-center">
+            <h3>0 Search Results Found</h3>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{%endblock%}
+
