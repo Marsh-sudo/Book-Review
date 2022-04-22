@@ -12,34 +12,43 @@
               </div>
               <div class="col-md-3">
                 <div class="card-body">
+                    <h4>Title:</h4>
                   <h5 class="card-title">{{novels.title}}</h5>
                   <p class="card-text"><small class="text-muted">By:{{novels.author}}</small></p>
                   <p class="card-text">4.5|1000+ reviews</p>
                   <br><br><br>
                   <p class="card-text">Genre:{{novels.genre}}</p>
                   <p class="card-text">Pages:{{novels.pages}}</p>
+                  <p class="card-text">Price:${{novels.price}}</p>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="card-body">
-                  <p class="card-text">{{novels.description}}</p>
+                  <p class="card-text" style="font-family: 'Playfair Display', serif;">{{novels.description}}</p>
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <a href="{%url 'newreview' novels.id %}?next={{ request.path}}" class="btn btn-primary" style="margin-left: 150px;">ADD REVIEW</a>
+                  <a href="https://www.paypal.com/ke/welcome/signup/#/mobile_conf" class="btn btn-success">$BUY BOOK</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<a href="{%url 'newreview' novels.id %}?next={{ request.path}}" class="btn btn-primary" style="margin-left: 150px;">ADD POST</a>
+<br><br>
+<hr>
+
+REVIEWS SECTION:
+<a href="{%url 'newreview' novels.id %}?next={{ request.path}}" class="btn btn-primary" style="margin-left: 150px;">ADD REVIEW</a>
 <div class="container">
   <div class="row">
     {%if novels.books.all%}
     {%for review in novels.books.all%}
     <div class="card">
-      <h5 class="card-header" style="text-align: center; background-color: aqua;">REVIEWS</h5>
+      <h5 class="card-header" style="text-align: center; background-color: olive">REVIEWS</h5>
       <div class="card-body">
         <h5 class="card-title">{{review.title|title}}</h5>
         <p class="card-text">{{review.post}}</p>
+        <p class="card-text"><small class="text-muted">Was This Helpful?<img src="https://img.icons8.com/ios/50/000000/thumbs-up-down.png"/></small></p>
       </div>
     </div>    
     {%endfor%}
