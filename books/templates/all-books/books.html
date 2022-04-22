@@ -2,27 +2,33 @@
 {%load bootstrap3%}
 {%load static%}
 {%block content%}
-
-<div class="container">
-    <div class="row">
-        {%for book in books%}
-        <div class="card mb-3" style="width: 100%;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{book.logo}}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{{book.title}}</h5>
-                  <p class="card-text"><small class="text-muted">{{book.author}}</small></p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<body style="background-color: gray;">
+    <br><br>
+<a href="{%url 'newbook' %}" class="btn btn-success" style="margin-left: 150px;">ADD BOOK</a>
+    <div class="container" style="background-color: gray;">
+        <div class="row">
+            {%for book in books%}
+            <div class="card mb-3" style="width: 50rem;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{book.logo}}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Title:{{book.title}}</h5>
+                      <p class="card-text"><small class="text-muted">Author:{{book.author}}</small></p>
+                      <p class="card-text">Desc.:{{book.description}}</p>
+                      <p class="card-text">Price:${{book.price}}</p>
+                      <img src="https://img.icons8.com/external-vectorslab-outline-color-vectorslab/53/000000/external-thumbs-up-business-and-finance-vectorslab-outline-color-vectorslab.png"/>2k+Reviews <br><br>
+                      <a href="/my_book/{{book.id}}" class="btn btn-outline-warning font-weight-bold btn-sm mb-2">SEE MORE</a> 
+                      <a href="https://www.paypal.com/ke/welcome/signup/#/mobile_conf" class="btn btn-success">$BUY BOOK</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <a href="/my_book/{{book.id}}" class="btn btn-outline-warning font-weight-bold btn-sm mb-2">SEE MORE</a> 
-          </div>
-          {%endfor%}
+              {%endfor%}
+        </div>
     </div>
-</div>
+</body>
 
 {%endblock%}
